@@ -3,7 +3,8 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 const cors = require("cors");
 
-const userRoutes = require("../routes/personal");
+const personalRoutes = require("../routes/personal");
+const groupRoutes = require("../routes/group");
 
 module.exports = function (app) {
   app.use(express.json({ limit: "50mb", type: "application/json" }));
@@ -12,5 +13,6 @@ module.exports = function (app) {
   app.use(helmet());
   app.use(cors());
 
-  app.use("/classy", userRoutes);
+  app.use("/classy", personalRoutes);
+  app.use("/classy", groupRoutes);
 };
