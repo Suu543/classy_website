@@ -1,6 +1,7 @@
 import React from "react";
+import { createPersonal } from "../../actions/personal";
 
-const SummaryInfo = ({ handleSubmit, getValues, setResult, page, setPage }) => {
+const SummaryInfo = ({ handleSubmit, getValues, page, setPage }) => {
   let summary = {};
   summary["name"] = getValues("name");
   summary["email"] = getValues("email");
@@ -8,13 +9,21 @@ const SummaryInfo = ({ handleSubmit, getValues, setResult, page, setPage }) => {
   summary["resorts"] = getValues("resorts");
   summary["licenses"] = getValues("licenses");
 
+  const savePersonalInfo = async (info) => {
+    try {
+      await createPersonal(info);
+      alert(`${summary.name}님 등록해주셔서 감사합니다!`);
+      window.location.reload();
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <form
       className="personal-general-info"
       onSubmit={handleSubmit((data) => {
-        setResult(JSON.stringify(data));
-        alert(`${summary.name}님 등록해주셔서 감사합니다!`);
-        window.location.reload();
+        savePersonalInfo(data);
       })}
     >
       <h1>요약</h1>

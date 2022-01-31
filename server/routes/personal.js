@@ -3,6 +3,6 @@ const router = express.Router();
 
 const { savePersonalInfo } = require("../controllers/personal.js");
 
-router.post("/personal", saveUserInfo);
+router.post("/personal", savePersonalInfo);
 
 module.exports = router;

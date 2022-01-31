@@ -7,7 +7,6 @@ import SummaryInfo from "./SummaryInfo";
 
 const PersonalPage = () => {
   const { register, handleSubmit, getValues } = useForm();
-  const [result, setResult] = useState("");
   const [showPage, setShowPage] = useState(false);
   const [page, setPage] = useState(0);
 
@@ -19,7 +18,6 @@ const PersonalPage = () => {
     } else if (page === 2) {
       return (
         <SummaryInfo
-          setResult={setResult}
           handleSubmit={handleSubmit}
           getValues={getValues}
           setPage={setPage}

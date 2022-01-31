@@ -11,13 +11,7 @@ exports.saveGroupInfo = async (req, res) => {
     base_resorts,
     lesson_resorts,
   });
-  //   console.log(`
-  //     name: ${name}, \n
-  //     email: ${email}, \n
-  //     phone: ${phone}, \n
-  //     resorts: ${resorts}, \n
-  //     licenses: ${licenses}
-  //     `);
+
   console.log("Group", group);
 
   try {

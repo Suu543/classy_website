@@ -1,6 +1,7 @@
 import React from "react";
+import { createGroup } from "../../actions/group";
 
-const SummaryInfo = ({ handleSubmit, getValues, setResult, page, setPage }) => {
+const SummaryInfo = ({ handleSubmit, getValues, page, setPage }) => {
   let summary = {};
   summary["name"] = getValues("name");
   summary["teamname"] = getValues("teamname");
@@ -9,13 +10,21 @@ const SummaryInfo = ({ handleSubmit, getValues, setResult, page, setPage }) => {
   summary["base_resorts"] = getValues("base_resorts");
   summary["lesson_resorts"] = getValues("lesson_resorts");
 
+  const saveGroupInfo = async (info) => {
+    try {
+      await createGroup(info);
+      alert(`${summary.name}님 등록해주셔서 감사합니다!`);
+      window.location.reload();
+    } catch (error) {
+      alert(error);
+    }
+  };
+
   return (
     <form
       className="personal-general-info"
       onSubmit={handleSubmit((data) => {
-        setResult(JSON.stringify(data));
-        alert(`${summary.name}님 등록해주셔서 감사합니다!`);
-        window.location.reload();
+        saveGroupInfo(data);
       })}
     >
       <h1>요약</h1>

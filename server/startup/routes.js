@@ -13,6 +13,6 @@ module.exports = function (app) {
   app.use(helmet());
   app.use(cors());
 
-  app.use("/classy", personalRoutes);
-  app.use("/classy", groupRoutes);
+  app.use("/classsy", personalRoutes);
+  app.use("/classsy", groupRoutes);
 };
